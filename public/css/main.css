@@ -1,0 +1,46 @@
+body {
+  background:white;
+  color:black;
+  font-family: "Montserrat", sans-serif;
+  margin: 20px;
+  background: #f9f9f9; 
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ccc;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+}
+
+button {
+  padding: 5px 10px;
+  border: none;
+  background: #007acc;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}

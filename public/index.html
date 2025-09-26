@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Car Tracker App</title>
+    <meta charset="utf-8" />
+    <script src="js/main.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" /> 
+  </head>
+  <body class="container mt-5">
+    <h1 class="text-center mb-4">Car Tracker 🚗</h1>
+
+    <form action="/add" method="POST" class="mb-4">
+      <div class="mb-3">
+        <label for="model" class="form-label">Car Model</label>
+        <input type="text" id="model" name="model" class="form-control" placeholder="Car Model" required />
+      </div>
+      <div class="mb-3">
+        <label for="year" class="form-label">Year</label>
+        <input type="number" id="year" name="year" class="form-control" placeholder="Year" required />
+      </div>
+      <div class="mb-3">
+        <label for="mpg" class="form-label">MPG</label>
+        <input type="number" id="mpg" name="mpg" class="form-control" placeholder="MPG" required />
+      </div>
+      <div class="mb-3">
+        <label for="fuel" class="form-label">Fuel Type</label>
+        <input type="text" id="fuel" name="fuel" class="form-control" placeholder="Fuel Type" />
+      </div>
+      <div class="mb-3">
+        <label for="isElectric" class="form-check-label">Electric</label>
+        <input type="checkbox" id="isElectric" name="isElectric" class="form-check-input" />
+      </div>
+      <div class="mb-3">
+        <label for="transmission" class="form-label">Transmission</label>
+        <input type="text" id="transmission" name="transmission" class="form-control" placeholder="Transmission" />
+      </div>
+      <div class="mb-3">
+        <label for="notes" class="form-label">Notes</label>
+        <textarea id="notes" name="notes" class="form-control" rows="3" placeholder="Additional notes about the car"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Car</button>
+    </form>
+
+    <h2 class="text-center">Car List</h2>
+    <table id="carTable" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Year</th>
+          <th>MPG</th>
+          <th>Age</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script>
+      document.querySelector("form").addEventListener("submit", function (e) {
+        const year = document.querySelector("#year").value;
+        const fuel = document.querySelector("#fuel").value;
+        const transmission = document.querySelector("#transmission").value;
+
+        const allowedFuels = ["gasoline", "diesel", "electric", "hybrid"];
+        const allowedTransmissions = ["auto", "manual"];
+
+        if (year < 1885) {
+          e.preventDefault();
+          alert("Year must be 1885 or later.");
+          return;
+        }
+        if (!allowedFuels.includes(fuel)) {
+          e.preventDefault();
+          alert(`Fuel must be one of: ${allowedFuels.join(", ")}.`);
+          return;
+        }
+        if (!allowedTransmissions.includes(transmission)) {
+          e.preventDefault();
+          alert(`Transmission must be one of: ${allowedTransmissions.join(", ")}.`);
+          return;
+        }
+      });
+    </script>
+  </body>
+</html>
+
